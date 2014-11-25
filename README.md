@@ -1,6 +1,6 @@
 # OpenGraphy
 
-TODO: Write a gem description
+TODO: Write a gem descriptio
 
 ## Installation
 
@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To fetch opengraph data from a URL then use:
+
+```ruby
+OpenGraphy.fetch("http://www.onthebeach.co.uk/hotels/")
+```
 
 ## Contributing
 
