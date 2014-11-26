@@ -1,6 +1,6 @@
 # OpenGraphy
 
-TODO: Write a gem descriptio
+This ruby gem allow you to fetch data that follows the opengraph protocol, and lets you fetch data from custom metatags also.
 
 ## Installation
 
@@ -20,8 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-To fetch opengraph data from a URL then use:
+Firstly require the gem using:
+```ruby
+require 'open_graphy'
+```
 
+By default the gem is set to look for og metatags.
+To fetch opengraph data from custom metatags you need to configure the gem. To do that use the following code which allows you to set an array of custom metatags and then fetch the url like below.
+```ruby
+OpenGraphy.configure do |config|
+  config.metatags = ["og:", "custom:tag:",]
+end
+```
+
+To fetch opengraph data from a URL then use:
 ```ruby
 OpenGraphy.fetch("http://www.onthebeach.co.uk/hotels/")
 ```
