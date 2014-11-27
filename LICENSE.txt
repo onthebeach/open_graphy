@@ -1,4 +1,4 @@
-Copyright (c) 2014 Craig Bradley
+Copyright (c) 2014 On The Beach Ltd.
 
 MIT License
 

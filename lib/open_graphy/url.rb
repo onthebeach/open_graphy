@@ -1,5 +1,5 @@
 module OpenGraphy
-  class Fetcher
+  class Url
     def initialize(uri)
       @uri = uri
     end
@@ -32,7 +32,7 @@ module OpenGraphy
     end
 
     def data
-      @data ||= Data.new
+      @data ||= MetaTags.new
     end
 
     def doc

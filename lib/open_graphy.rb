@@ -4,8 +4,8 @@ require 'open-uri'
 require 'socket'
 require 'singleton'
 require 'open_graphy/configuration'
-require 'open_graphy/fetcher'
-require 'open_graphy/data'
+require 'open_graphy/url'
+require 'open_graphy/meta_tags'
 require 'open_graphy/meta_tag'
 
 module OpenGraphy
@@ -18,6 +18,6 @@ module OpenGraphy
   end
 
   def self.fetch(uri)
-    Fetcher.fetch(uri)
+    Url.fetch(uri)
   end
 end

@@ -1,5 +1,5 @@
 module OpenGraphy
-  class Data
+  class MetaTags
     def initialize
       @data = {}
     end

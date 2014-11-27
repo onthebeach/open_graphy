@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 module OpenGraphy
-  describe Fetcher do
+  describe Url do
     describe '.fetch' do
-      let(:og_data) { Fetcher.fetch(uri) }
+      let(:og_data) { Url.fetch(uri) }
       let(:uri) { 'http://www.imdb.com/title/tt0107048/' }
       let(:meta_tags) { [] }
       let(:file) { File.new('spec/support/fixtures/groundhog_day.html') }
 
       before do
-        allow_any_instance_of(Fetcher).to receive(:open).with(uri).
+        allow_any_instance_of(Url).to receive(:open).with(uri).
           and_return(file)
       end
 

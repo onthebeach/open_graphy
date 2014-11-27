@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe OpenGraphy::Data, :vcr  do
+describe OpenGraphy::MetaTags, :vcr  do
   subject{ OpenGraphy.fetch(url) }
   let(:url){ 'http://www.imdb.com/title/tt2084970/?ref_=inth_ov_tt' }
 

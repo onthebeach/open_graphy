@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 27 Nov 2014 16:20:17 GMT
+      - Thu, 27 Nov 2014 17:34:49 GMT
       Content-Type:
       - text/html; charset=utf-8
       Transfer-Encoding:
@@ -38,17 +38,17 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - _otb_variant=; path=/; expires=Thu, 01-Jan-1970 00:00:00 GMT; secure
-      - _otb_www_app_session=422f7f3e86e6c2b8ad99760afc1d2d06; path=/; secure; HttpOnly
+      - _otb_www_app_session=50db2c75a3162211b389cf9fe63d7501; path=/; secure; HttpOnly
       - otb_device=desktop;Path=/;
-      - otb_variant=AA; path=/; expires=Sun, 27-Nov-2016 16:20:17 GMT; secure
-      - remember_token=387d83f0881854e90f22daf80f7ffb6268071a0514ced284ca144f494f8f1c26c3e530a113f57f5d;
-        path=/; expires=Sun, 27-Nov-2016 16:20:17 GMT; secure
-      - split_feature_cookie=98; path=/; expires=Fri, 28-Nov-2014 16:20:17 GMT; secure
+      - otb_variant=BA; path=/; expires=Sun, 27-Nov-2016 17:34:48 GMT; secure
+      - remember_token=0540ad9f6484d23fada355f3b02db488645af22ccbfa76e552a077839d71efd19a44364002ca7fc7;
+        path=/; expires=Sun, 27-Nov-2016 17:34:48 GMT; secure
+      - split_feature_cookie=82; path=/; expires=Fri, 28-Nov-2014 17:34:48 GMT; secure
       - variant=; path=/; expires=Thu, 01-Jan-1970 00:00:00 GMT; secure
       X-Request-Id:
-      - 2a090380983c778b7448d6a5c8d12a9f
+      - 061503a50f7731a6de8de04f64c8aa36
       X-Runtime:
-      - '0.058529'
+      - '0.065291'
       X-Rack-Cache:
       - miss
     body:
@@ -74,7 +74,7 @@ http_interactions:
         bnItZGF0YS5uZXQiLCJsaWNlbnNlS2V5IjoiNWUzYTkzZjk3MiIsImFwcGxp
         Y2F0aW9uSUQiOiI5ODg5MyIsInRyYW5zYWN0aW9uTmFtZSI6IkoxNWVRQlpY
         VlE5VFFCMWZRZ1p1VTFrWEYxb01XRVpYWGtKTFFsaGJFdz09IiwicXVldWVU
-        aW1lIjoxLCJhcHBsaWNhdGlvblRpbWUiOjU3LCJhZ2VudFRva2VuIjpudWxs
+        aW1lIjoxLCJhcHBsaWNhdGlvblRpbWUiOjY0LCJhZ2VudFRva2VuIjpudWxs
         LCJhZ2VudCI6ImpzLWFnZW50Lm5ld3JlbGljLmNvbS9uci00NzYubWluLmpz
         In08L3NjcmlwdD4KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPih3
         aW5kb3cuTlJFVU18fChOUkVVTT17fSkpLmxvYWRlcl9jb25maWc9e3hwaWQ6
@@ -350,8 +350,8 @@ http_interactions:
         dGNoZXIiIG1ldGhvZD0icG9zdCI+PGRpdiBzdHlsZT0ibWFyZ2luOjA7cGFk
         ZGluZzowO2Rpc3BsYXk6aW5saW5lIj48aW5wdXQgbmFtZT0idXRmOCIgdHlw
         ZT0iaGlkZGVuIiB2YWx1ZT0iJiN4MjcxMzsiIC8+PGlucHV0IG5hbWU9ImF1
-        dGhlbnRpY2l0eV90b2tlbiIgdHlwZT0iaGlkZGVuIiB2YWx1ZT0iK0hSbXNM
-        MS9tcE4zVlErOEk2YzRVVmQvSkltWXlpVExhcDVsamp3WTBqbz0iIC8+PC9k
+        dGhlbnRpY2l0eV90b2tlbiIgdHlwZT0iaGlkZGVuIiB2YWx1ZT0iZ1UzNkI0
+        MDVYcWpPU2FzZCsrb0x0SER5VHp3YjFVcEExZHYxTks4QXoxVT0iIC8+PC9k
         aXY+CiAgICAgICAgPGlucHV0IGlkPSJlbWFpbC1jYXRjaGVyLWNsb3NlLWZp
         ZWxkIiBuYW1lPSJjbG9zZSIgdHlwZT0iaGlkZGVuIiB2YWx1ZT0iZmFsc2Ui
         IC8+CiAgICAgICAgPGlucHV0IGlkPSJlbWFpbC1jYXRjaGVyLWZpZWxkIiBu
@@ -435,8 +435,8 @@ http_interactions:
         c3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtkaXNwbGF5OmlubGluZSI+PGlu
         cHV0IG5hbWU9InV0ZjgiIHR5cGU9ImhpZGRlbiIgdmFsdWU9IiYjeDI3MTM7
         IiAvPjxpbnB1dCBuYW1lPSJhdXRoZW50aWNpdHlfdG9rZW4iIHR5cGU9Imhp
-        ZGRlbiIgdmFsdWU9IkpyaVRJYWU0WW14SklvcmN0Y3R6cHB2VHdER1lMa0Vh
-        RG8xeGVLdlVyWEE9IiAvPjwvZGl2PgogICAgPGRpdiBjbGFzcz0ic2VhcmNo
+        ZGRlbiIgdmFsdWU9ImozcGVtb2pSM0FqWE42YWF0S1N1Mm9HT0F6QUw1VWFr
+        YU5TdzRaT1hKUVE9IiAvPjwvZGl2PgogICAgPGRpdiBjbGFzcz0ic2VhcmNo
         X21vZGVzIHRhYmJlZC1uYXYiPgogICAgICA8ZGl2IGNsYXNzPSJzZWFyY2gt
         dGFicyIgcm9sZT0ibmF2aWdhdGlvbiI+CiAgICAgICAgPGEgaHJlZj0iLyIg
         Y2xhc3M9InRhYiBmbGlnaHRfYW5kX2hvdGVsIGZpcnN0IiByZWw9ImZsaWdo
@@ -1513,7 +1513,7 @@ http_interactions:
         ICAgIH0gZWxzZSB7CiAgICAgIHBhZ2VUcmFja2VyLl90cmFja1BhZ2V2aWV3
         KCIiKTsKICAgIH0KICAgIAogIH0gY2F0Y2goZXJyKSB7fQoKICB0cnl7CiAg
         dmFyIGFiX3RyYWNrZXIgPSBfZ2F0Ll9nZXRUcmFja2VyKCJVQS0xNTU4OTgt
-        MTAiKTsKICBhYl90cmFja2VyLl9zZXREb21haW5OYW1lKCJvbnRoZWJlYWNo
+        MTQiKTsKICBhYl90cmFja2VyLl9zZXREb21haW5OYW1lKCJvbnRoZWJlYWNo
         LmNvLnVrIik7CiAgYWJfdHJhY2tlci5fc2V0QWxsb3dMaW5rZXIodHJ1ZSk7
         CiAgYWJfdHJhY2tlci5faW5pdERhdGEoKTsKICBpZiAob29wcykgewogICAg
         YWJfdHJhY2tlci5fdHJhY2tQYWdldmlldygiLzQwNC5odG1sP3BhZ2U9LyZh
@@ -1539,5 +1539,5 @@ http_interactions:
         cyIgYXN5bmM+PC9zY3JpcHQ+CgoKICAgICAgCiAgICAgIAoKICAgIAogIDwv
         Ym9keT4KPC9odG1sPgo=
     http_version: 
-  recorded_at: Thu, 27 Nov 2014 16:20:17 GMT
+  recorded_at: Thu, 27 Nov 2014 17:34:49 GMT
 recorded_with: VCR 2.9.3

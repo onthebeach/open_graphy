@@ -7,7 +7,7 @@ describe OpenGraphy, :vcr do
 
   describe '.fetch' do
     it 'should return an object with the opengraph data' do
-      expect(subject).to be_kind_of(OpenGraphy::Data)
+      expect(subject).to be_kind_of(OpenGraphy::MetaTags)
     end
   end
 
