@@ -41,10 +41,13 @@ describe OpenGraphy, :vcr do
   end
 
   describe OpenGraphy::Configuration do
+    before do
+      OpenGraphy.configure do |config|
+        config.metatags = ["og:", "onthebeach:deal:", "onthebeach:hotel:"]
+      end
+    end
     describe '#metatags' do
-      config = OpenGraphy::Configuration.new
-      config.metatags = ["og", "onthebeach:deal", "onthebeach:hotel"]
-      it{ expect(config.metatags).to eq(["og", "onthebeach:deal", "onthebeach:hotel"]) }
+      it{ expect(OpenGraphy.configuration.metatags).to eq(["og:", "onthebeach:deal:", "onthebeach:hotel:"]) }
     end
   end
 
@@ -74,7 +77,6 @@ describe OpenGraphy, :vcr do
   describe 'fetch url without og data' do
     let(:url){ 'https://www.onthebeach.co.uk' }
     it "should return a title" do
-      puts subject.title
       expect(subject.keys).to eq(['title'])
     end
   end
