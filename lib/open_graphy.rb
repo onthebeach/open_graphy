@@ -2,7 +2,8 @@ require "open_graphy/version"
 require "nokogiri"
 require "open-uri"
 require "singleton"
-require "configuration"
+require "open_graphy/configuration"
+require "open_graphy/fetcher"
 
 module OpenGraphy
   def self.configuration
@@ -14,24 +15,7 @@ module OpenGraphy
   end
 
   def self.fetch(uri)
-    parse(uri)
-  end
-
-  def self.parse(uri)
-    doc = Nokogiri::HTML(open(uri))
-    data = Data.new
-    doc.css('//meta').each do |tag|
-      configuration.metatags.each do |metatag|
-        if tag.attr('property') =~ Regexp.new(metatag)
-          key = tag.attr('property').sub(metatag, '')
-          data.add_data(key, tag.attr('content').to_s)
-        end
-      end
-    end
-    if !data.title
-      data.add_data("title",  doc.css('title').text)
-    end
-    data
+    Fetcher.fetch(uri)
   end
 
   class Data

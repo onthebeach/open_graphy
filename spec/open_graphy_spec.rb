@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'open_graphy'
 
 describe OpenGraphy, :vcr do
   subject{ OpenGraphy.fetch(url) }
