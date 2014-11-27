@@ -1,5 +1,3 @@
-require 'socket'
-
 module OpenGraphy
   class Fetcher
     def initialize(uri)
@@ -17,7 +15,7 @@ module OpenGraphy
         end
         data.add_data('__html_title_tag',  doc.css('title').text)
       rescue SocketError, Errno::ENOENT
-        data.add_data("url", @uri)
+        data.add_data('url', @uri)
       end
 
       data
