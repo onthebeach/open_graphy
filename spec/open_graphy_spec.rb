@@ -11,46 +11,7 @@ describe OpenGraphy, :vcr do
     end
   end
 
-  describe OpenGraphy::Data  do
-    it 'should have a title' do
-      expect(subject.title).to eq('The Imitation Game (2014)')
-    end
-
-    it 'should have a url' do
-      expect(subject.url).to eq('http://www.imdb.com/title/tt2084970/')
-    end
-
-    it 'should have a type' do
-      expect(subject.type).to eq('video.movie')
-    end
-
-    let(:expected_image_url){ 'http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg' }
-
-    it 'should have an image' do
-      expect(subject.image).to eq(expected_image_url)
-    end
-
-    it 'should return false for an undefined method' do
-      expect(subject.undefined_method).to eq(false)
-    end
-
-    it 'should be able to return the keys of the object' do
-      expect(subject.keys).to eq(["url", "image", "type", "title", "site_name", "description"])
-    end
-  end
-
-  describe OpenGraphy::Configuration do
-    before do
-      OpenGraphy.configure do |config|
-        config.metatags = ["og:", "onthebeach:deal:", "onthebeach:hotel:"]
-      end
-    end
-    describe '#metatags' do
-      it{ expect(OpenGraphy.configuration.metatags).to eq(["og:", "onthebeach:deal:", "onthebeach:hotel:"]) }
-    end
-  end
-
-  describe '#configure' do
+  describe 'custom metatags' do
     let(:url){'https://www.onthebeach.co.uk/deals/53ee67c676036401a67eab73026a97f9/e01a07efddb6e124da373b31222c162f/80507aab0fb81591a992fcc5b77d93a4'}
     before do
       OpenGraphy.configure do |config|
