@@ -38,4 +38,10 @@ describe OpenGraphy, :vcr do
       expect(subject.keys).to eq(['__html_title_tag'])
     end
   end
+
+  describe 'try to fetch from a website that does not exist' do
+    it "return data class with url" do
+      expect(OpenGraphy.fetch("abcde").keys).to eql(["url"])
+    end
+  end
 end

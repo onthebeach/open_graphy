@@ -1,3 +1,5 @@
+require 'socket'
+
 module OpenGraphy
   class Fetcher
     def initialize(uri)
@@ -9,10 +11,15 @@ module OpenGraphy
     end
 
     def fetch
-      valid_meta_tags.each do |tag|
-        data.add_data(tag.name, tag.value)
+      begin
+        valid_meta_tags.each do |tag|
+          data.add_data(tag.name, tag.value)
+        end
+        data.add_data('__html_title_tag',  doc.css('title').text)
+      rescue SocketError, Errno::ENOENT
+        data.add_data("url", @uri)
       end
-      data.add_data('__html_title_tag',  doc.css('title').text)
+
       data
     end
 
