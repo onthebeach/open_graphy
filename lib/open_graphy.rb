@@ -2,6 +2,7 @@ require "open_graphy/version"
 require "nokogiri"
 require "open-uri"
 require "singleton"
+require "configuration"
 
 module OpenGraphy
   def self.configuration
@@ -10,15 +11,6 @@ module OpenGraphy
 
   def self.configure
     yield(configuration)
-  end
-
-  class Configuration
-    include Singleton
-    attr_accessor :metatags
-
-    def initialize
-      @metatags = ['og:']
-    end
   end
 
   def self.fetch(uri)
