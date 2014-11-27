@@ -25,8 +25,16 @@ describe OpenGraphy::Data, :vcr  do
     expect(subject.undefined_method).to eq(false)
   end
 
-  it 'should be able to return the keys of the object' do
-    expect(subject.keys).to eq(["url", "image", "type", "title", "site_name", "description"])
-  end
+  describe '#keys' do
+    let(:expected_keys) {
+      [
+        "url", "image", "type", "title",
+        "site_name", "description", "__html_title_tag"
+      ]
+    }
 
+    it 'should be able to return the keys of the object' do
+      expect(subject.keys).to eq(expected_keys)
+    end
+  end
 end

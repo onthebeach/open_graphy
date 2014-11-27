@@ -20,14 +20,12 @@ describe OpenGraphy, :vcr do
     end
 
     let(:expected_keys){
-      [ "title","description","image","type", "url", "site_name",
-        "id",
-        "hotel_id",
-        "board_code",
-        "price",
-        "hotel_result_id",
-        "board_result_id",
-        "flight_result_id" ] }
+      [
+        "title", "description","image","type", "url", "site_name",
+        "id", "hotel_id", "board_code", "price", "hotel_result_id",
+        "board_result_id", "flight_result_id", '__html_title_tag'
+      ]
+    }
 
     it 'returns OnTheBeach meta tags' do
       expect( subject.keys ).to eq(expected_keys)
@@ -37,7 +35,7 @@ describe OpenGraphy, :vcr do
   describe 'fetch url without og data' do
     let(:url){ 'https://www.onthebeach.co.uk' }
     it "should return a title" do
-      expect(subject.keys).to eq(['title'])
+      expect(subject.keys).to eq(['__html_title_tag'])
     end
   end
 end

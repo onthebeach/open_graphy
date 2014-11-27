@@ -12,11 +12,7 @@ module OpenGraphy
       valid_meta_tags.each do |tag|
         data.add_data(tag.name, tag.value)
       end
-
-      if !data.title
-        data.add_data("title",  doc.css('title').text)
-      end
-
+      data.add_data('__html_title_tag',  doc.css('title').text)
       data
     end
 

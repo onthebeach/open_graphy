@@ -4,6 +4,18 @@ module OpenGraphy
       @data = {}
     end
 
+    def title
+      @data.fetch('title', __html_title_tag)
+    end
+
+    def title?
+      title
+    end
+
+    def __html_title_tag
+      @data['__html_title_tag']
+    end
+
     def method_missing(method_sym, *arguments, &block)
       if @data.has_key?(method_sym.to_s)
         @data[method_sym.to_s]
