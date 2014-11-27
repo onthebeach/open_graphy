@@ -5,6 +5,7 @@ require "singleton"
 require "open_graphy/configuration"
 require "open_graphy/fetcher"
 require "open_graphy/data"
+require "open_graphy/meta_tag"
 
 module OpenGraphy
   def self.configuration
