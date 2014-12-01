@@ -15,11 +15,19 @@ module OpenGraphy
     end
 
     def method_missing(method_sym, *arguments, &block)
-      if method_sym.to_s.sub(/.?$/, "")
+      if method_sym.to_s.end_with?('?')
         false
       else
         super
       end
+    end
+
+    def respond_to?(method_name, include_private = false)
+      method_name.to_s.end_with?('?') || super
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.to_s.end_with?('?') || super
     end
 
     private

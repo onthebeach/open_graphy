@@ -26,7 +26,7 @@ module OpenGraphy
     end
 
     def meta_tags
-      doc.css('//meta').map { |tag| MetaTag.new(doc, tag) }
+      doc.css('meta').map { |tag| MetaTag.new(doc, tag) }
     end
 
     def data

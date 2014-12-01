@@ -1,8 +1,11 @@
 require 'spec_helper'
 
-describe OpenGraphy, :vcr do
-  subject { OpenGraphy.fetch(url) }
-
+describe OpenGraphy do
+  subject {
+    VCR.use_cassette('imdb/tt2084970') do
+      OpenGraphy.fetch(url)
+    end
+  }
   let(:url) { 'http://www.imdb.com/title/tt2084970/?ref_=inth_ov_tt' }
 
   describe '.fetch' do
@@ -12,8 +15,13 @@ describe OpenGraphy, :vcr do
   end
 
   describe 'custom metatags' do
-    let(:open_graphy) { OpenGraphy.fetch(url) }
+    let(:open_graphy) {
+      VCR.use_cassette('onthebeach/deals') do
+        OpenGraphy.fetch(url)
+      end
+    }
     let(:url) { 'https://www.onthebeach.co.uk/deals/53ee67c676036401a67eab73026a97f9/e01a07efddb6e124da373b31222c162f/80507aab0fb81591a992fcc5b77d93a4' }
+
     before do
       OpenGraphy.configure do |config|
         config.metatags = ["og:", "onthebeach:deal:", "onthebeach:hotel:"]
@@ -36,7 +44,11 @@ describe OpenGraphy, :vcr do
   end
 
   describe 'try to fetch a webpage that does not exist' do
-    let(:open_graphy_data) { OpenGraphy.fetch('http://google.com/404.html') }
+    let(:open_graphy_data) {
+      VCR.use_cassette('google/404') do
+        OpenGraphy.fetch('http://google.com/404.html')
+      end
+    }
 
     it "return data class with url" do
       expect(open_graphy_data.url).to eql('http://google.com/404.html')
