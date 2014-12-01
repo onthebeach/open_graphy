@@ -41,7 +41,6 @@ The fetch method returns an object which has methods that can be used to access 
 ```ruby
 movie.title #=> "The Imitation Game (2014)"
 movie.image #=> "http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg"
-movie.keys #=> ["url", "image", "type", "title", "site_name", "description"]
 movie.video #=> false
 ```
 
