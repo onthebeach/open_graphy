@@ -14,7 +14,7 @@ module OpenGraphy
           data.add(tag.name, tag.value)
         end
         data.add('__html_title_tag',  doc.css('title').text)
-      rescue SocketError, Errno::ENOENT
+      rescue SocketError, Errno::ENOENT, OpenURI::HTTPError
         data.add('url', @uri)
       end
 
