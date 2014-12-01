@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe OpenGraphy, :vcr do
-  subject{ OpenGraphy.fetch(url) }
+  subject { OpenGraphy.fetch(url) }
 
-  let(:url){ 'http://www.imdb.com/title/tt2084970/?ref_=inth_ov_tt' }
+  let(:url) { 'http://www.imdb.com/title/tt2084970/?ref_=inth_ov_tt' }
 
   describe '.fetch' do
     it 'should return an object with the opengraph data' do
@@ -12,14 +12,14 @@ describe OpenGraphy, :vcr do
   end
 
   describe 'custom metatags' do
-    let(:url){'https://www.onthebeach.co.uk/deals/53ee67c676036401a67eab73026a97f9/e01a07efddb6e124da373b31222c162f/80507aab0fb81591a992fcc5b77d93a4'}
+    let(:url) { 'https://www.onthebeach.co.uk/deals/53ee67c676036401a67eab73026a97f9/e01a07efddb6e124da373b31222c162f/80507aab0fb81591a992fcc5b77d93a4' }
     before do
       OpenGraphy.configure do |config|
         config.metatags = ["og:", "onthebeach:deal:", "onthebeach:hotel:"]
       end
     end
 
-    let(:expected_keys){
+    let(:expected_keys) {
       [
         "title", "description","image","type", "url", "site_name",
         "id", "hotel_id", "board_code", "price", "hotel_result_id",
@@ -28,20 +28,15 @@ describe OpenGraphy, :vcr do
     }
 
     it 'returns OnTheBeach meta tags' do
-      expect( subject.keys ).to eq(expected_keys)
-    end
-  end
-
-  describe 'fetch url without og data' do
-    let(:url){ 'https://www.onthebeach.co.uk' }
-    it "should return a title" do
-      expect(subject.keys).to eq(['__html_title_tag'])
+      expect( subject.title ).to eq(expected_keys)
     end
   end
 
   describe 'try to fetch from a website that does not exist' do
+    let(:open_graphy_data) { OpenGraphy.fetch('http://google.com/404.html') }
+
     it "return data class with url" do
-      expect(OpenGraphy.fetch("abcde").keys).to eql(["url"])
+      expect(open_graphy_data.url).to eql('http://google.com/404.html')
     end
   end
 end

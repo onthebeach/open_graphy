@@ -1,40 +1,54 @@
 require 'spec_helper'
 describe OpenGraphy::MetaTags, :vcr  do
-  subject{ OpenGraphy.fetch(url) }
-  let(:url){ 'http://www.imdb.com/title/tt2084970/?ref_=inth_ov_tt' }
+  let(:meta_tags) { OpenGraphy::MetaTags.new }
 
-  it 'should have a title' do
-    expect(subject.title).to eq('The Imitation Game (2014)')
-  end
+  describe '#add' do
+    context 'with a title' do
+      before do
+        meta_tags.add('title', 'Laguna Park II, Tenerife')
+      end
 
-  it 'should have a url' do
-    expect(subject.url).to eq('http://www.imdb.com/title/tt2084970/')
-  end
+      it 'has a title' do
+        expect(meta_tags.title?).to be(true)
+      end
 
-  it 'should have a type' do
-    expect(subject.type).to eq('video.movie')
-  end
+      it 'returns the title' do
+        expect(meta_tags.title).to eql('Laguna Park II, Tenerife')
+      end
+    end
 
-  let(:expected_image_url){ 'http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg' }
+    context 'without a title but with a page title' do
+      before do
+        meta_tags.add('__html_title_tag', 'Laguna Park Hotel')
+      end
 
-  it 'should have an image' do
-    expect(subject.image).to eq(expected_image_url)
-  end
+      it 'has a title' do
+        expect(meta_tags.title?).to be(true)
+      end
 
-  it 'should return false for an undefined method' do
-    expect(subject.undefined_method).to eq(false)
-  end
+      it 'sets the title as the page title' do
+        expect(meta_tags.title).to eql('Laguna Park Hotel')
+      end
+    end
 
-  describe '#keys' do
-    let(:expected_keys) {
-      [
-        "url", "image", "type", "title",
-        "site_name", "description", "__html_title_tag"
-      ]
-    }
+    context 'with an image' do
+      before do
+        meta_tags.add('image', 'foo.jpg')
+      end
 
-    it 'should be able to return the keys of the object' do
-      expect(subject.keys).to eq(expected_keys)
+      it 'has an image' do
+        expect(meta_tags.image?).to be(true)
+      end
+
+      it 'returns the image url' do
+        expect(meta_tags.image).to eql('foo.jpg')
+      end
+    end
+
+    context 'without a description' do
+      it 'has no description' do
+        expect(meta_tags.description?).to be(false)
+      end
     end
   end
 end
