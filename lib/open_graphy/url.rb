@@ -10,9 +10,7 @@ module OpenGraphy
 
     def fetch
       begin
-        valid_meta_tags.each do |tag|
-          data.add(tag.name, tag.value)
-        end
+        valid_meta_tags.each { |tag| data.add(tag.name, tag.value) }
         data.add('__html_title_tag',  doc.css('title').text)
       rescue SocketError, Errno::ENOENT, OpenURI::HTTPError
         data.add('url', @uri)
