@@ -54,4 +54,18 @@ describe OpenGraphy do
       expect(open_graphy_data.url).to eql('http://google.com/404.html')
     end
   end
+
+  describe 'try to fetch a webpage that has no opengraph url' do
+    let(:url) { 'http://www.tripadvisor.co.uk/Hotel_Review-g198832-d236315-Reviews-Grand_Hotel_Kronenhof-Pontresina_Engadin_St_Moritz_Canton_of_Graubunden_Swiss_Alps.html'}
+    let(:open_graphy_data) {
+      VCR.use_cassette('tripadvisor/hotel') do
+        OpenGraphy.fetch(url)
+      end
+    }
+
+    it 'should return the url passed in' do
+      expect(open_graphy_data.url?).to be(true)
+      expect(open_graphy_data.url).to eql('http://www.tripadvisor.co.uk/Hotel_Review-g198832-d236315-Reviews-Grand_Hotel_Kronenhof-Pontresina_Engadin_St_Moritz_Canton_of_Graubunden_Swiss_Alps.html')
+    end
+  end
 end
