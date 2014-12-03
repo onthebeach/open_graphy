@@ -2,6 +2,8 @@ require 'net/http'
 
 module OpenGraphy
   module Uri
+    class RedirectLoopError < StandardError; end
+
     def self.open(uri_str)
       fetch(uri_str).body
     end
@@ -9,7 +11,7 @@ module OpenGraphy
     private
 
     def self.fetch(uri_str, limit = 10)
-      raise ArgumentError, 'too many HTTP redirects' if limit == 0
+      raise  RedirectLoopError, 'too many HTTP redirects' if limit == 0
       response = Net::HTTP.get_response(URI(uri_str))
 
       case response

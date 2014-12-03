@@ -1,6 +1,5 @@
 require 'open_graphy/version'
 require 'nokogiri'
-require 'open-uri'
 require 'socket'
 require 'singleton'
 require 'open_graphy/configuration'
