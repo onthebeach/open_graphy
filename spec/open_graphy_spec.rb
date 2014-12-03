@@ -68,4 +68,31 @@ describe OpenGraphy do
       expect(open_graphy_data.url).to eql('http://www.tripadvisor.co.uk/Hotel_Review-g198832-d236315-Reviews-Grand_Hotel_Kronenhof-Pontresina_Engadin_St_Moritz_Canton_of_Graubunden_Swiss_Alps.html')
     end
   end
+
+
+  describe 'try and fetch a webpage that redirects' do
+    let(:url) { 'http://uk.pinterest.com/pin/384213411933800344/' }
+    let(:open_graphy_data) {
+      VCR.use_cassette('pinterest/pin') do
+        OpenGraphy.fetch(url)
+      end
+    }
+
+    it 'should follow the redirect and return data class' do
+      expect(open_graphy_data.url?).to be(true)
+      expect(open_graphy_data.url).to eql('https://www.pinterest.com/pin/384213411933800344/')
+      expect(open_graphy_data.title?).to be(true)
+      expect(open_graphy_data.title).to eql('car')
+      expect(open_graphy_data.image?).to be(true)
+      expect(open_graphy_data.image).to eql('https://s-media-cache-ak0.pinimg.com/736x/7c/e6/fe/7ce6fea0a4f281573a1c7f2c68d13d5a.jpg')
+      expect(open_graphy_data.type?).to be(true)
+      expect(open_graphy_data.type).to eql('pinterestapp:pin')
+      expect(open_graphy_data.description?).to be(true)
+      expect(open_graphy_data.description).to eql('Mercedes SLS | Luxury | Sport | Car | http://amazingsportcarcollections.blogspot.com')
+      expect(open_graphy_data.site_name?).to be(true)
+      expect(open_graphy_data.site_name).to eql('Pinterest')
+      expect(open_graphy_data.see_also?).to be(true)
+      expect(open_graphy_data.see_also).to eql('http://amazingsportcarcollections.blogspot.com/2013/09/recaro-performance-sport-car-seat-back.html')
+    end
+  end
 end

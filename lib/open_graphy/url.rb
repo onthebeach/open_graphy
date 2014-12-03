@@ -13,7 +13,7 @@ module OpenGraphy
       begin
         valid_meta_tags.each { |tag| data.add(tag.name, tag.value) }
         data.add('__html_title_tag',  doc.css('title').text)
-      rescue SocketError, Errno::ENOENT, OpenURI::HTTPError
+      rescue Net::HTTPServerException
       end
 
       data
@@ -34,7 +34,7 @@ module OpenGraphy
     end
 
     def doc
-      @doc ||= Nokogiri::HTML(open(@uri))
+      @doc ||= Nokogiri::HTML(Uri.open(@uri))
     end
   end
 end

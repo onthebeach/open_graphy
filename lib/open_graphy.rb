@@ -5,6 +5,7 @@ require 'socket'
 require 'singleton'
 require 'open_graphy/configuration'
 require 'open_graphy/url'
+require 'open_graphy/uri'
 require 'open_graphy/meta_tags'
 require 'open_graphy/meta_tag'
 

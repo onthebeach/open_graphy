@@ -9,7 +9,7 @@ module OpenGraphy
       let(:file) { File.new('spec/support/fixtures/groundhog_day.html') }
 
       before do
-        allow_any_instance_of(Url).to receive(:open).with(uri).
+        expect(Uri).to receive(:open).with(uri).
           and_return(file)
       end
 
