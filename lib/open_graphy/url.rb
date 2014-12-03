@@ -13,7 +13,7 @@ module OpenGraphy
       begin
         valid_meta_tags.each { |tag| data.add(tag.name, tag.value) }
         data.add('__html_title_tag',  doc.css('title').text)
-      rescue Net::HTTPServerException
+      rescue Net::HTTPServerException, ArgumentError
       end
 
       data
