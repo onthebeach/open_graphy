@@ -8,8 +8,16 @@ describe OpenGraphy do
   }
 
   describe '#open' do
-    it 'should redirect and return a response' do
-      expect(subject).to include('<meta property="og:site_name" content="Pinterest">')
+    context 'with a good url' do
+      it 'should redirect and return a response' do
+        expect(subject).to include('<meta property="og:site_name" content="Pinterest">')
+      end
+    end
+
+    context 'with a bad url' do
+      it 'should throw a BadUriError' do
+        expect{OpenGraphy::Uri.fetch('/title/test/')}.to raise_error(OpenGraphy::Uri::BadUriError)
+      end
     end
   end
 end

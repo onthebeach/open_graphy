@@ -7,6 +7,7 @@ require 'open_graphy/url'
 require 'open_graphy/uri'
 require 'open_graphy/meta_tags'
 require 'open_graphy/meta_tag'
+require 'open_graphy/fetcher'
 
 module OpenGraphy
   def self.configuration
