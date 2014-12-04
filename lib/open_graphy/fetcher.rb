@@ -23,6 +23,8 @@ module OpenGraphy
         end
       end
 
+      private
+
       def follow_redirection(response)
         @uri_str = response['location']
         @limit -= 1
