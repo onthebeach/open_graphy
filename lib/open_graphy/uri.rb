@@ -3,6 +3,7 @@ require 'net/http'
 module OpenGraphy
   module Uri
     class RedirectLoopError < StandardError; end
+    class BadUriError < StandardError; end
 
     def self.open(uri_str)
       fetch(uri_str).body
@@ -12,7 +13,11 @@ module OpenGraphy
 
     def self.fetch(uri_str, limit = 10)
       raise  RedirectLoopError, 'too many HTTP redirects' if limit == 0
-      response = Net::HTTP.get_response(URI(uri_str))
+      uri = URI(uri_str)
+
+      raise BadUriError, 'the url is incomplete' if uri.host == nil
+
+      response = Net::HTTP.get_response(uri)
 
       case response
       when Net::HTTPSuccess then
