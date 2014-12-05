@@ -6,6 +6,7 @@ module OpenGraphy
       end
 
       def fetch
+        check_redirect_limit
         uri = URI(@uri_str)
         raise BadUriError, 'the url is incomplete' if uri.host == nil
 
