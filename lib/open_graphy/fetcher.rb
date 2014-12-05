@@ -1,18 +1,15 @@
 module OpenGraphy
   module Uri
     class Fetcher
-      def initialize(uri, limit = 10)
-        @uri_str, @limit = uri, limit
+      def initialize(uri_str, limit = 10)
+        @uri_str, @limit = uri_str, limit
       end
 
       def fetch
-        raise  Uri::RedirectLoopError, 'too many HTTP redirects' if @limit == 0
         uri = URI(@uri_str)
-
         raise BadUriError, 'the url is incomplete' if uri.host == nil
 
         response = Net::HTTP.get_response(uri)
-
         case response
         when Net::HTTPSuccess then
           response
@@ -29,6 +26,10 @@ module OpenGraphy
         @uri_str = response['location']
         @limit -= 1
         self.fetch
+      end
+
+      def check_redirect_limit
+        raise  Uri::RedirectLoopError, 'too many HTTP redirects' if @limit == 0
       end
     end
   end
