@@ -31,9 +31,9 @@ describe OpenGraphy::MetaTags do
       end
     end
 
-    context 'with an image' do
+    context 'with a good image url' do
       before do
-        meta_tags.add('image', 'foo.jpg')
+        meta_tags.add('image', 'http://www.foobar.com/foo.jpg')
       end
 
       it 'has an image' do
@@ -41,7 +41,17 @@ describe OpenGraphy::MetaTags do
       end
 
       it 'returns the image url' do
-        expect(meta_tags.image).to eql('foo.jpg')
+        expect(meta_tags.image).to eql('http://www.foobar.com/foo.jpg')
+      end
+    end
+
+    context 'with a bad image url' do
+      before do
+        meta_tags.add('image', '123')
+      end
+
+      it 'does not have an image' do
+        expect(meta_tags.image?).to be(false)
       end
     end
 

@@ -8,6 +8,7 @@ require 'open_graphy/uri'
 require 'open_graphy/meta_tags'
 require 'open_graphy/meta_tag'
 require 'open_graphy/fetcher'
+require 'open_graphy/url_validator'
 
 module OpenGraphy
   def self.configuration

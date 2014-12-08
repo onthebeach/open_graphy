@@ -8,10 +8,24 @@ module OpenGraphy
       !!title
     end
 
+    def image
+      if valid_image_url?
+        image_url
+      else
+        raise NoMethodError
+      end
+    end
+
+    def image?
+      valid_image_url?
+    end
+
     def add(key, value)
       data[key] = value
-      define_singleton_method key, lambda { value }
-      define_singleton_method "#{key}?", lambda { !!value }
+      if define_accessors?(key)
+        define_singleton_method key, lambda { value }
+        define_singleton_method "#{key}?", lambda { !!value }
+      end
     end
 
     def method_missing(method_sym, *arguments, &block)
@@ -31,6 +45,21 @@ module OpenGraphy
     end
 
     private
+    def image_url
+      data.fetch('image', false)
+    end
+
+    def valid_image_url?
+      @valid_image_url ||= UrlValidator.new(image_url).valid?
+    end
+
+    def define_accessors?(key)
+      !black_list.include?(key)
+    end
+
+    def black_list
+      %w(image)
+    end
 
     def data
       @data ||= {}
