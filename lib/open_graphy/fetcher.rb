@@ -7,30 +7,39 @@ module OpenGraphy
 
       def fetch
         check_redirect_limit
-        uri = URI(@uri_str)
-        raise BadUriError, 'the url is incomplete' if uri.host == nil
 
-        response = Net::HTTP.get_response(uri)
-        case response
+        http_response = response
+        case http_response
         when Net::HTTPSuccess then
-          response
+          http_response
         when Net::HTTPRedirection then
-          follow_redirection(response)
+          follow_redirection(http_response)
         else
-          response.value
+          http_response.value
         end
       end
 
       private
 
-      def follow_redirection(response)
-        @uri_str = response['location']
+      def follow_redirection(http_response)
+        @uri_str = http_response['location']
         @limit -= 1
         self.fetch
       end
 
       def check_redirect_limit
         raise  Uri::RedirectLoopError, 'too many HTTP redirects' if @limit == 0
+      end
+
+      def uri
+        uri = URI(@uri_str)
+        raise BadUriError, 'the url is incomplete' if uri.host == nil
+
+        uri
+      end
+
+      def response
+        Net::HTTP.get_response(uri)
       end
     end
   end
