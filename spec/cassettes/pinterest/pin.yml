@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - OpenGraphyBot
   response:
     status:
       code: 301
@@ -77,7 +77,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - OpenGraphyBot
       Host:
       - uk.pinterest.com
   response:
@@ -9876,7 +9876,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - OpenGraphyBot
       Host:
       - uk.pinterest.com
   response:
@@ -9943,7 +9943,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Ruby
+      - OpenGraphyBot
       Host:
       - uk.pinterest.com
   response:

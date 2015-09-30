@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OpenGraphy do
   subject {
-    VCR.use_cassette('pinterest/pin', :record => :new_episodes) do
+    VCR.use_cassette('pinterest/pin') do
       OpenGraphy::Uri.open('http://uk.pinterest.com/pin/384213411933800344/')
     end
   }

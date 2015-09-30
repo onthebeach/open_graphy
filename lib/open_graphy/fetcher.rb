@@ -38,9 +38,30 @@ module OpenGraphy
         uri
       end
 
-      def response
-        Net::HTTP.get_response(uri)
+      def request
+        Net::HTTP::Get.new(uri.request_uri, headers)
       end
+
+      def response
+        http.request(request)
+      end
+
+      def http
+        Net::HTTP.new(uri.host, uri.port).tap do |http|
+          http.use_ssl = ssl?
+        end
+      end
+
+      def ssl?
+        uri.scheme == 'https'
+      end
+
+      def headers
+        {
+          'User-Agent' => OpenGraphy.configuration.user_agent,
+        }
+      end
+
     end
   end
 end
