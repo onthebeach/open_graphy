@@ -1,7 +1,5 @@
-require 'spec_helper'
-
 module OpenGraphy
-  describe UrlValidator do
+  RSpec.describe UrlValidator do
 
     describe '#fetch' do
       context 'with a valid url' do

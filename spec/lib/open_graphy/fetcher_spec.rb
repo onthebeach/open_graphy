@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe OpenGraphy::Uri::Fetcher do
+RSpec.describe OpenGraphy::Uri::Fetcher do
   describe '#fetch' do
     let(:fetcher) { OpenGraphy::Uri::Fetcher.new(uri) }
     let(:uri) { 'https://www.onthebeach.co.uk/test' }

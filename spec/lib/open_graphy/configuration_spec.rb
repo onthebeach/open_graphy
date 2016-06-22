@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe OpenGraphy do
+RSpec.describe OpenGraphy do
 
   describe OpenGraphy::Configuration do
     before do

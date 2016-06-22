@@ -20,12 +20,22 @@ module OpenGraphy
       valid_image_url?
     end
 
-    def add(key, value)
+    def add(key, value, namespace: TagNamespace.new)
       data[key] = value
-      if define_accessors?(key)
-        define_singleton_method key, lambda { value }
-        define_singleton_method "#{key}?", lambda { !!value }
+      if namespace.any?
+        if respond_to?(namespace.first)
+          public_send(namespace.first).add(key, value, namespace: namespace.next)
+        else
+          tag = MetaTags.new.add(key, value, namespace: namespace.next)
+          define_singleton_method(namespace.first, -> { tag })
+        end
+      else
+        if define_accessors?(key)
+          define_singleton_method key, -> { value }
+          define_singleton_method "#{key}?", -> { !!value }
+        end
       end
+      self
     end
 
     def method_missing(method_sym, *arguments, &block)
@@ -45,6 +55,7 @@ module OpenGraphy
     end
 
     private
+
     def image_url
       data.fetch('image', false)
     end

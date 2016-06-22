@@ -11,7 +11,7 @@ module OpenGraphy
     def fetch
       data.add('url', @uri)
       begin
-        valid_meta_tags.each { |tag| data.add(tag.name, tag.value) }
+        valid_meta_tags.each { |tag| data.add(tag.name, tag.value, namespace: tag.namespace) }
         data.add('__html_title_tag',  doc.css('title').text)
       rescue SocketError, Net::HTTPServerException, Uri::RedirectLoopError, Uri::BadUriError
       end

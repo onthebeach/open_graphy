@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe OpenGraphy do
+RSpec.describe OpenGraphy do
   subject {
     VCR.use_cassette('pinterest/pin') do
       OpenGraphy::Uri.open('http://uk.pinterest.com/pin/384213411933800344/')

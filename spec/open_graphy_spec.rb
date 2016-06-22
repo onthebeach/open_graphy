@@ -34,13 +34,13 @@ describe OpenGraphy do
     it { expect(open_graphy.type).to eq('website') }
     it { expect(open_graphy.url).to eq('https://www.onthebeach.co.uk/deals/53ee67c676036401a67eab73026a97f9/e01a07efddb6e124da373b31222c162f/80507aab0fb81591a992fcc5b77d93a4') }
     it { expect(open_graphy.site_name).to eq('On The Beach') }
-    it { expect(open_graphy.id).to eq('53ee67c676036401a67eab73026a97f9') }
-    it { expect(open_graphy.hotel_id).to eq('281399') }
-    it { expect(open_graphy.board_code).to eq('SC') }
-    it { expect(open_graphy.price).to eq('287.40') }
-    it { expect(open_graphy.hotel_result_id).to eq('53ee67c676036401a67eab73026a97f9') }
-    it { expect(open_graphy.board_result_id).to eq('b736a3ddafc484424470a056445671d4') }
-    it { expect(open_graphy.flight_result_id).to eq('80507aab0fb81591a992fcc5b77d93a4') }
+    it { expect(open_graphy.onthebeach.deal.id).to eq('53ee67c676036401a67eab73026a97f9') }
+    it { expect(open_graphy.onthebeach.deal.hotel_id).to eq('281399') }
+    it { expect(open_graphy.onthebeach.deal.board_code).to eq('SC') }
+    it { expect(open_graphy.onthebeach.deal.price).to eq('287.40') }
+    it { expect(open_graphy.onthebeach.deal.hotel_result_id).to eq('53ee67c676036401a67eab73026a97f9') }
+    it { expect(open_graphy.onthebeach.deal.board_result_id).to eq('b736a3ddafc484424470a056445671d4') }
+    it { expect(open_graphy.onthebeach.deal.flight_result_id).to eq('80507aab0fb81591a992fcc5b77d93a4') }
   end
 
   describe 'try to fetch a webpage that does not exist' do

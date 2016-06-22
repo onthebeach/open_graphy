@@ -1,7 +1,5 @@
-require 'spec_helper'
-
 module OpenGraphy
-  describe Url do
+  RSpec.describe Url do
     describe '.fetch' do
       let(:og_data) { Url.fetch(uri) }
       let(:uri) { 'http://www.imdb.com/title/tt0107048/' }

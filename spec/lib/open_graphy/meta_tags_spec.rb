@@ -1,5 +1,4 @@
-require 'spec_helper'
-describe OpenGraphy::MetaTags do
+RSpec.describe OpenGraphy::MetaTags do
   let(:meta_tags) { OpenGraphy::MetaTags.new }
 
   describe '#add' do

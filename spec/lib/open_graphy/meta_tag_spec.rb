@@ -1,7 +1,5 @@
-require 'spec_helper'
-
 module OpenGraphy
-  describe MetaTag do
+  RSpec.describe MetaTag do
     let(:meta_tag) { MetaTag.new(doc, meta_tag_element) }
     let(:doc) { double('MokogiriDoc') }
     let(:meta_tag_element) { double('MokogiriElement') }

@@ -4,6 +4,10 @@ module OpenGraphy
       @doc, @meta_tag = doc, meta_tag
     end
 
+    def namespace
+      @namespace ||= TagNamespace.new(tag_name.split(':'))
+    end
+
     def valid?
       tag_name
     end
