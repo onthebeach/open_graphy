@@ -25,14 +25,6 @@ Firstly require the gem using:
 require 'open_graphy'
 ```
 
-By default the gem is set to look for og metatags.
-To fetch opengraph data from custom metatags you need to configure the gem. To do that use the following code which allows you to set an array of custom metatags and then fetch the url like below.
-```ruby
-OpenGraphy.configure do |config|
-  config.metatags = ["og:", "custom:tag:",]
-end
-```
-
 To fetch opengraph data from a URL use:
 ```ruby
 data = OpenGraphy.fetch("www.imdb.com/title/tt2084970/")
@@ -43,6 +35,19 @@ movie.title #=> "The Imitation Game (2014)"
 movie.image #=> "http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg"
 movie.video #=> false
 ```
+
+## Configuration
+By default the gem is set to look for og metatags.
+To fetch opengraph data from custom metatags you need to configure the gem. To do that use the following code which allows you to set an array of custom metatags and then fetch the url like below.
+```ruby
+OpenGraphy.configure do |config|
+  config.metatags = ["og:", "custom:tag:",]
+end
+```
+
+## Copyright
+
+Copyright (c) 2016 OnTheBeach Ltd. See LICENSE.txt for further details.
 
 ## Contributing
 
