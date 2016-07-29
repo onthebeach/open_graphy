@@ -13,6 +13,18 @@ module OpenGraphy
       namespace.any? && first != 'og'
     end
 
+    def add_to(key, value, tag)
+      if any?
+        tag.define_namespace(child_name).add(key, value, namespace: self.next)
+      else
+        tag.define_value(key, value)
+      end
+    end
+
+    def child_name
+      namespace.first
+    end
+
     def next
       TagNamespace.new(
         [namespace.size > 1 ? namespace.last : nil].compact

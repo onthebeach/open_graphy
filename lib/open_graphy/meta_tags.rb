@@ -22,20 +22,25 @@ module OpenGraphy
 
     def add(key, value, namespace: TagNamespace.new)
       data[key] = value
-      if namespace.any?
-        if respond_to?(namespace.first)
-          public_send(namespace.first).add(key, value, namespace: namespace.next)
-        else
-          tag = MetaTags.new.add(key, value, namespace: namespace.next)
-          define_singleton_method(namespace.first, -> { tag })
-        end
-      else
-        if define_accessors?(key)
-          define_singleton_method key, -> { value }
-          define_singleton_method "#{key}?", -> { !!value }
-        end
-      end
+      namespace.add_to(key, value, self)
       self
+    end
+
+    def define_namespace(name)
+      if respond_to?(name)
+        public_send(name)
+      else
+        MetaTags.new.tap { |tag|
+          define_singleton_method(name, -> { tag })
+        }
+      end
+    end
+
+    def define_value(key, value)
+      if define_accessors?(key)
+        define_singleton_method key, -> { value }
+        define_singleton_method "#{key}?", -> { !!value }
+      end
     end
 
     def method_missing(method_sym, *arguments, &block)
@@ -56,16 +61,16 @@ module OpenGraphy
 
     private
 
+    def define_accessors?(key)
+      !black_list.include?(key)
+    end
+
     def image_url
       data.fetch('image', false)
     end
 
     def valid_image_url?
       @valid_image_url ||= UrlValidator.new(image_url).valid?
-    end
-
-    def define_accessors?(key)
-      !black_list.include?(key)
     end
 
     def black_list
