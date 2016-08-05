@@ -29,7 +29,7 @@ To fetch opengraph data from a URL use:
 ```ruby
 movie = OpenGraphy.fetch("https://www.rottentomatoes.com/m/coffee_and_cigarettes/")
 ```
-The fetch method returns an object which has methods that can be used to access the data retrieved. If there is data, false will be returned
+The fetch method returns an object with methods defined that can be used to access the data retrieved. A is also defined so you can check the existence of data before using it.
 ```ruby
 movie.title #=> "Coffee and Cigarettes"
 movie.image? #=> true
