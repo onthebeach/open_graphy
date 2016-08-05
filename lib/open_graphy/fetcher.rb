@@ -28,7 +28,7 @@ module OpenGraphy
       end
 
       def check_redirect_limit
-        raise  Uri::RedirectLoopError, 'too many HTTP redirects' if @limit == 0
+        raise Uri::RedirectLoopError, 'too many HTTP redirects' if @limit == 0
       end
 
       def uri

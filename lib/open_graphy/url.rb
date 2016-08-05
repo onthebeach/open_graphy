@@ -22,7 +22,7 @@ module OpenGraphy
     private
 
     def valid_meta_tags
-      valid_meta_tags ||= meta_tags.select(&:valid?)
+      @valid_meta_tags ||= meta_tags.select(&:valid?)
     end
 
     def meta_tags
