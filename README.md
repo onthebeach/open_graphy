@@ -27,13 +27,14 @@ require 'open_graphy'
 
 To fetch opengraph data from a URL use:
 ```ruby
-data = OpenGraphy.fetch("www.imdb.com/title/tt2084970/")
+movie = OpenGraphy.fetch("https://www.rottentomatoes.com/m/coffee_and_cigarettes/")
 ```
 The fetch method returns an object which has methods that can be used to access the data retrieved. If there is data, false will be returned
 ```ruby
-movie.title #=> "The Imitation Game (2014)"
-movie.image #=> "http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg"
-movie.video #=> false
+movie.title #=> "Coffee and Cigarettes"
+movie.image? #=> true
+movie.image #=> "https://resizing.flixster.com/9l1s-frU7dhkYqr0V-C0AlDpJuU=/740x290/v1.bjs3MDg4NTg7ajsxNzA2MzsxMjAwOzEyODA7NzIw"
+movie.type #=> "video.movie"
 ```
 
 ## Configuration
