@@ -1,4 +1,4 @@
-# OpenGraphy
+# OpenGraphy  [![Build Status](https://travis-ci.org/onthebeach/open_graphy.svg)](https://travis-ci.org/onthebeach/open_graphy) [![Gem Version](https://badge.fury.io/rb/open_graphy.svg)](http://badge.fury.io/rb/open_graphy)
 
 This ruby gem allow you to fetch data that follows the opengraph protocol, and lets you fetch data from custom metatags also.
 
