@@ -38,10 +38,19 @@ movie.video #=> false
 
 ## Configuration
 By default the gem is set to look for og metatags.
-To fetch opengraph data from custom metatags you need to configure the gem. To do that use the following code which allows you to set an array of custom metatags and then fetch the url like below.
+To fetch data from custom metatags you can configure the gem, the example below shows a typical configuration.
+
 ```ruby
 OpenGraphy.configure do |config|
   config.metatags = ["og:", "custom:tag:",]
+end
+```
+
+When fetching data the default useragent is `OpenGraphyBot`, the example below shows a custom user agent being set.
+
+```ruby
+OpenGraphy.configure do |config|
+  config.user_agent = 'DataBot/0.6'
 end
 ```
 
