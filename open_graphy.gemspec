@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "open_graphy"
   spec.version       = OpenGraphy::VERSION
   spec.authors       = ["Craig Bradley", "James Cotterill"]
-  spec.email         = ["craig-bradley@onthebeach.co.uk", "james.cotterill@onthebeach.co.uk" ]
+  spec.email         = ["craig.bradley@onthebeach.co.uk", "james.cotterill@onthebeach.co.uk" ]
   spec.summary       = %q{Open Graph Protocol wrapper}
   spec.description   = %q{A simple ruby wrapper for the open graph protocol}
   spec.license       = 'MIT'
