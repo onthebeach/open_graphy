@@ -9,8 +9,6 @@ module OpenGraphy
       fetch(uri_str).body
     end
 
-    private
-
     def self.fetch(uri)
       Fetcher.new(uri).fetch
     end
