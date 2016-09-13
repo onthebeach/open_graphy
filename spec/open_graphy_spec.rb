@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe OpenGraphy do
-  subject {
+RSpec.describe OpenGraphy do
+  subject(:open_graphy) {
     VCR.use_cassette('imdb/tt2084970') do
       OpenGraphy.fetch(url)
     end
@@ -12,6 +12,10 @@ describe OpenGraphy do
     it 'should return an object with the opengraph data' do
       expect(subject).to be_kind_of(OpenGraphy::MetaTags)
     end
+
+    it { expect(open_graphy.url).to eql('http://www.imdb.com/title/tt2084970/') }
+    it { expect(open_graphy.site_name).to eql('IMDb') }
+    it { expect(open_graphy.image).to eql('http://ia.media-imdb.com/images/M/MV5BNDkwNTEyMzkzNl5BMl5BanBnXkFtZTgwNTAwNzk3MjE@._V1_.jpg') }
   end
 
   describe 'custom metatags' do
